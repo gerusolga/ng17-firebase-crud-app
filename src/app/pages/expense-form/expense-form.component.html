@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-lg-6">
+    <h4>Expense Form</h4>
+
+    <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="text" class="form-control" id="price" placeholder="Price" [formControl]="priceField">
+        @if (priceField.hasError('required') && priceField.touched) {
+          <div class="form-text text-danger fw-bold"> Price is required</div>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" placeholder="Title" [formControl]="titleField">
+        @if (titleField.hasError('required') && titleField.touched) {
+          <div class="form-text text-danger fw-bold"> Title is required</div>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" rows="3" [formControl]="descriptionField"></textarea>
+      </div>
+      <button type="submit" [disabled]="expenseForm.invalid" class="btn btn-success">Save Changes</button>
+    </form>
+  </div>
+</div>
